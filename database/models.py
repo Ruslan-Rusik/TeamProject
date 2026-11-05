@@ -1,3 +1,3 @@
-from user import User, Seller, Buyer
-from product import Category, Product
-from order import OrderItem, Order
+from database.user import User, Seller, Buyer
+from database.product import Category, Product
+from database.order import OrderItem, Order
