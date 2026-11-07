@@ -1,5 +1,5 @@
 from fastapi import FastAPI,Request
-from config.routes.routes import user_router
+# from config.routes.routes import user_router
 from contextlib import asynccontextmanager
 from config.database_config.config import engine
 from config.database_config.config import Base
@@ -26,7 +26,7 @@ async def startup(app:FastAPI):
     yield
 
 app = FastAPI(lifespan=startup)
-app.include_router(user_router)
+# app.include_router(user_router)
 
 @app.get("/")
 async def main_page(request:Request):
