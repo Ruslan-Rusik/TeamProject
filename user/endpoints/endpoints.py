@@ -6,11 +6,11 @@ from typing import List
 from database.user import User, Buyer, Seller
 from config.database_config.config import get_db
 from ..schema.schemas import UserResponse, UserCreate, UserRole
-# from config.routes.routes import user_router
+from config.routes.routes import user_router
 
-app = FastAPI()
 
-@app.post("/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+
+@user_router.post("/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).filter(User.email == user_in.email))
     existing_user = result.scalars().first()
@@ -42,7 +42,7 @@ async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
     }
 
 
-@app.get("/", response_model=List[UserResponse])
+@user_router.get("/", response_model=List[UserResponse])
 async def get_users(db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User))
     users = result.scalars().all()
@@ -63,7 +63,7 @@ async def get_users(db: AsyncSession = Depends(get_db)):
     ]
 
 
-@app.get("/{user_id}", response_model=UserResponse)
+@user_router.get("/{user_id}", response_model=UserResponse)
 async def get_user(user_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).filter(User.id == user_id))
     user = result.scalars().first()
