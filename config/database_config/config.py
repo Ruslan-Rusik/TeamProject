@@ -3,10 +3,10 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 
 
 
+
 Base = declarative_base()
 
-# DATABASE_URL = 'sqlite+aiosqlite:///./shop.db'
-DATABASE_URL = "mysql+aiomysql://database_admin:qwerty123@db:3306/fastapi_practice"
+DATABASE_URL = 'sqlite+aiosqlite:///./shop.db'
 
 engine = create_async_engine(
     url=DATABASE_URL
