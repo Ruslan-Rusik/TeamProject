@@ -5,7 +5,7 @@ from config.routes.routes import user_router, product_router, order_router
 from config.database_config.config import get_db, engine
 from contextlib import asynccontextmanager
 from sqlalchemy import select
-import product.endpoints, user.endpoints as apps
+import product.endpoints.endpoints, user.endpoints.endpoints as apps
 
 @asynccontextmanager
 async def startup(app: FastAPI):
