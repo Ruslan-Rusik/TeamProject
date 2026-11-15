@@ -3,8 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .block{
+            margin:30px;
+            padding: 20px;
+            border: 1px solid rgb(212, 212, 212);
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Главная страница. Ею занимается Руслан</h1>
+    {% if products %}
+    <div class="container">
+        {% for product in products %}
+            <div class="block">
+                <div>Название: {{ product.name }}</div>
+                <div>Описание: {{ product.description }}</div>
+                <div>Количество на складе: {{ product.stock }}</div>
+                <div>Цена: {{ product.price }}</div>
+
+                <div>ID продавца: {{ product.seller_id }}</div>
+                <div>ID категории: {{ product.category_id }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div>Товаров нет</div>
+    {% endif %}
 </body>
 </html>
