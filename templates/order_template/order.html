@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Список товаров</h1>
+{% if orders %}
+    {% for order in orders %}
+        <h3>заказ {{ order.id }}</h3>
+
+        <p>Покупатель {{ order.buyer_id }}</p>
+        <p>Общ стоимость {{ order.total_price }}</p>
+    {% endfor %}
+{% else %}
+    <p>нет заказов</p>
+{% endif %} 
 
 </body>
 </html>
+
