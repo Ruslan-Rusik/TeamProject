@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+{% if users %}
+{% for elem in users %}
+<h1>{{ elem.username }} -- {{ elem.id }}</h1>
+{% endfor %}
+{% else %}
+<h1>БД пустая юзеров сьели волки</h1>
+{% endif %}
+<a href="/">main page</a>
 </body>
 </html>
